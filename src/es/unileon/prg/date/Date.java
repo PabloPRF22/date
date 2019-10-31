@@ -45,52 +45,85 @@ public class Date{
 		}
 		return maxDays;
 	}
-	public int nameMonth(int month){
-		String month = "";
+
+	public String nameOfMonth(int month){
+		String monthName = null;
 		switch(month){
 			case 1:
-				month ="January";
+				monthName ="January";
 				break;
 			case 3:
-				month ="March";
+				monthName ="March";
 				break;
 			case 5:
-				month ="May";
+				monthName ="May";
 				break;
 			case 7:
-				month ="July";
+				monthName ="July";
 				break;
 			case 8:
-				month ="August";
+				monthName ="August";
 				break;
 			case 10:
-				month ="October";
+				monthName ="October";
 				break;
 			case 12: 
-				month = "December";
+				monthName = "December";
 				break;
 			case 2:
-				month = "February"
-				maxDays = 28;
+				monthName = "February";
+
 				
 				break;
 			case 4:
-				month ="April";
+				monthName ="April";
 				break;
 			case 6:
-				month ="June";
+				monthName ="June";
 				break;
 			case 9:
-				month ="September";
+				monthName ="September";
 				break;
 			case 11:
-				maxDays = 30;
-				month = "november";
+				monthName = "november";
 				break;
 				
 		}
-		return maxDays;
+		return monthName;
 	}
+	public String seasonOfMonth(int month){
+		String season = null;
+		switch(month){
+			case 12:
+			case 1:
+			case 2:
+				season = "Winter";
+				break;
+			case 3:
+			case 4:
+			case 5:
+				season = "Spring";
+				break;
+			case 6:
+			case 7: 
+			case 8:
+				season = "Summer";
+				break;
+			case 9:
+			case 10:
+			case 11:
+				season = "Autumn";
+				break;
+
+		
+		}
+		return season;
+	}
+	public int monthsToEndYear(int month){
+		int remaining = 12-month;
+		return remaining;
+	}
+
 	public void setMonth(int month) throws DateException{
 		if(month<1 || month>12){
 			throw new DateException("Date error: month value" + month + " not valid value. It should be from 1 to 12");	
@@ -136,6 +169,14 @@ public class Date{
 	public boolean isSame(Date otherDate){
 		return this.year==otherDate.getYear() && this.month==otherDate.getMonth() && this.day==otherDate.getDay();
 	}
+	public String toString(){
+		StringBuffer Date = new StringBuffer();
+		Date.append("Year:" + getYear()+ "\n");
+		Date.append("Month:" + nameOfMonth(getMonth())+ "\n");
+		Date.append("Day:" + getDay()+ "\n");
+		return Date.toString();
+	}
+
 
 
 }
