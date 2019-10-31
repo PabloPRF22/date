@@ -146,6 +146,13 @@ public class Date{
 		}
 	}
 	
+	public void datesUntilEndMonth(){
+		for(int i = getDay(); i<daysOfMonth(getMonth()); i++){
+			this.day = i;
+			toString();
+		}
+	
+	}
 	public int getYear(){
 		return this.year;
 	}
@@ -171,11 +178,12 @@ public class Date{
 	}
 	public String toString(){
 		StringBuffer Date = new StringBuffer();
-		Date.append("Year:" + getYear()+ "\n");
-		Date.append("Month:" + nameOfMonth(getMonth())+ "\n");
-		Date.append("Day:" + getDay()+ "\n");
+		Date.append("\nYear:" + getYear()+ " ");
+		Date.append("Month:" + nameOfMonth(getMonth())+ " ");
+		Date.append("Day:" + getDay()+ " ");
 		return Date.toString();
 	}
+	
 
 
 
