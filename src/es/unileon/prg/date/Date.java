@@ -155,6 +155,42 @@ public class Date{
 		return remaining;
 	}
 
+	/**
+	 * Muestra todas las fechas que quedan para acabar el mes
+	 * 
+	 * @parame none
+	 * 
+	 */
+	public void datesToFinishMonth() throws DateException {
+		for (int i = getDay(); i < daysOfMonth(getMonth()); i++) {
+			Date nueva = new Date(i, this.getMonth(), this.getYear());
+			System.out.println(nueva.toString());
+			
+		}
+	}
+	/**
+	 * Devuelve los meses con el mismo numero de dias
+	 * 
+	 * @parame none
+	 * 			
+	 */
+	public String monthsWithSameDays() {
+		StringBuffer meses = new StringBuffer();
+		for (int i = 1; i <= 12; i++) {
+			if(daysOfMonth(i) == daysOfMonth(getMonth())) {
+				meses.append(nameOfMonth(i)+ " ");
+			}
+		}
+		return meses.toString();
+		
+	}
+
+
+
+
+
+
+
 	public void setMonth(int month) throws DateException{
 		if(month<1 || month>12){
 			throw new DateException("Date error: month value" + month + " not valid value. It should be from 1 to 12");	
