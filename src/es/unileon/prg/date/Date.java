@@ -247,28 +247,93 @@ public class Date{
 		return meses.toString();
 		
 	}
-
+/*	public boolean isSameYear(Date otherDate){
+		boolean sameYear = false;
+		if(this.year==otherDate.getYear()) {
+			return sameYear = true;
+			
+		}else {
+			return sameYear;
+		}
+	}
+	*/
+	/*public boolean isSameDay(Date otherDate){
+		boolean sameDay = false;
+		if(this.day==otherDate.getDay()) {
+			return sameDay=true;
+			
+		}else {
+			return sameDay;
+		}
+		
+	}
+	*/
+	/*
+	public boolean isSameMonth(Date otherDate){
+		boolean sameMonth = false;
+		if(this.month==otherDate.getMonth()) {
+			return sameMonth = true
+		}else {
+			return sameMonth;
+		}
+	}
+	*/
+	/*
+	public boolean isSame(Date otherDate){
+		boolean same = false;
+		if(this.year==otherDate.getYear() && this.month==otherDate.getMonth() && this.day==otherDate.getDay()) {
+			return same=true;
+		}else {
+			return same;
+		}
+	}
+	*/
+	/**
+	 * Retorna true o false si se el año es igual al que se recibe como parametro
+	 * 
+	 * @return true o false
+	 **/
 	public boolean isSameYear(Date otherDate){
 		return this.year==otherDate.getYear();
 	}
+	/**
+	 * Retorna true o false si el dia es igual al que se recibe como parametro
+	 * @param otherDate
+	 * 			otherDate: objeto de tipo date
+	 * @return true o false
+	 */
 	public boolean isSameDay(Date otherDate){
 		return this.day==otherDate.getDay();
 	}
+	/**
+	 * Retorna true o false si el mes es igual al que se recibe como parametro
+	 * @param otherDate
+	 * 			otherDate: objeto de tipo date
+	 * @return true o false
+	 */
 	public boolean isSameMonth(Date otherDate){
 		return this.month==otherDate.getMonth();
 	}
+	/**
+	 * Retorna true o false si la fecha es igual al que se recibe como parametro
+	 * @param otherDate
+	 * 			otherDate: objeto de tipo date
+	 * @return true o false
+	 */
 	public boolean isSame(Date otherDate){
 		return this.year==otherDate.getYear() && this.month==otherDate.getMonth() && this.day==otherDate.getDay();
 	}
+	/**
+	 * Retorna los datos mas significativos del objeto Date
+	 * 
+	 * @return date
+	 */
 	public String toString(){
 		StringBuffer Date = new StringBuffer();
-		Date.append("\nYear:" + getYear()+ " ");
-		Date.append("Month:" + nameOfMonth(getMonth())+ " ");
-		Date.append("Day:" + getDay()+ " ");
+		Date.append("Year:" + getYear()+ "\n");
+		Date.append("Month:" + nameOfMonth(getMonth())+ "\n");
+		Date.append("Day:" + getDay()+ "\n");
 		return Date.toString();
 	}
-	
-
-
 
 }
