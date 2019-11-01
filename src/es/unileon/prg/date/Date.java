@@ -335,5 +335,47 @@ public class Date{
 		Date.append("Day:" + getDay()+ "\n");
 		return Date.toString();
 	}
-
+	public int daysToFinishYear() {
+		int daysToFinishYear = 0;
+		int diaM = this.getDay();
+		int monthM = this.month;
+		while (monthM != 1 || diaM != 1) {
+			if(monthM !=12 && diaM == daysOfMonth(monthM) ) {
+				diaM = 1;
+				monthM++;						
+			}else if(monthM == 12 && diaM == daysOfMonth(12)){
+				monthM = 1;
+				diaM = 1;
+			}else {
+				diaM++;
+			}			
+			daysToFinishYear++;
+		
+		}
+		return daysToFinishYear;
+	}
+	/**
+	 * genera fechas random hasta acertar la declada
+	 * 
+	 * @parame none
+	 * @return attempts
+	 **/
+	public int randDateEqualsInitDate() {
+		int attempts = 0;
+		int monthRand = 0;
+		int dayRand = 0;
+		Random rand = new Random();
+		/*
+		while(monthRand != this.month || dayRand != this.day) {
+			monthRand = rand.nextInt(12)+1;
+			dayRand =  rand.nextInt(daysOfMonth(monthRand))+1;
+			attempts++;
+		}*/
+		do {
+			monthRand = rand.nextInt(12)+1;
+			dayRand =  rand.nextInt(daysOfMonth(monthRand))+1;
+			attempts++;	
+		}while(monthRand != this.month || dayRand != this.day);
+		return attempts;
+	}
 }
