@@ -87,166 +87,6 @@ public class Date{
 	public int getDay(){
 		return this.day;
 	}
-	
-	/**
-	 * Devuelve el numero de dias que tiene el mes
-	 * 
-	 * @parame month
-	 * 			month: numero del mes
-	 * @return maxDays
-	 */
-	public int daysOfMonth(int month){
-		int maxDays =  0;
-		switch(month){
-			case 1:
-			case 3:
-			case 5:
-			case 7:
-			case 8:
-			case 10:
-			case 12: 
-				maxDays = 31;
-				break;
-			case 2:
-				maxDays = 28;
-				break;
-			case 4:
-			case 6:
-			case 9:
-			case 11:
-				maxDays = 30;
-				break;
-				
-		}
-		return maxDays;
-	}
-	/**
-	 * Devuelve el nombre del mes
-	 * 
-	 * @parame month
-	 * 			month: numero del mes
-	 * @return monthName
-	 */
-	public String nameOfMonth(int month){
-		String monthName = null;
-		switch(month){
-			case 1:
-				monthName ="January";
-				break;
-			case 3:
-				monthName ="March";
-				break;
-			case 5:
-				monthName ="May";
-				break;
-			case 7:
-				monthName ="July";
-				break;
-			case 8:
-				monthName ="August";
-				break;
-			case 10:
-				monthName ="October";
-				break;
-			case 12: 
-				monthName = "December";
-				break;
-			case 2:
-				monthName = "February";
-
-				
-				break;
-			case 4:
-				monthName ="April";
-				break;
-			case 6:
-				monthName ="June";
-				break;
-			case 9:
-				monthName ="September";
-				break;
-			case 11:
-				monthName = "november";
-				break;
-				
-		}
-		return monthName;
-	}
-	/**
-	 * Devuelve la estacion del año
-	 * 
-	 * @parame month
-	 * 			month: numero del mes
-	 * @return season
-	 */
-	public String seasonOfMonth(int month){
-		String season = null;
-		switch(month){
-			case 12:
-			case 1:
-			case 2:
-				season = "Winter";
-				break;
-			case 3:
-			case 4:
-			case 5:
-				season = "Spring";
-				break;
-			case 6:
-			case 7: 
-			case 8:
-				season = "Summer";
-				break;
-			case 9:
-			case 10:
-			case 11:
-				season = "Autumn";
-				break;
-
-		
-		}
-		return season;
-	}
-	/**
-	 * Devuelve cuantos meses quedan para acabar el  año
-	 * 
-	 * @parame month
-	 * 			month: numero del mes
-	 * @return remaining
-	 */
-	public int monthsToEndYear(int month){
-		int remaining = 12-month;
-		return remaining;
-	}
-	/**
-	 * Muestra todas las fechas que quedan para acabar el mes
-	 * 
-	 * @parame none
-	 * 
-	 */
-	public void datesToFinishMonth() throws DateException {
-		for (int i = getDay(); i < daysOfMonth(getMonth()); i++) {
-			Date nueva = new Date(i, this.getMonth(), this.getYear());
-			System.out.println(nueva.toString());
-			
-		}
-	}
-	/**
-	 * Devuelve los meses con el mismo numero de dias
-	 * 
-	 * @parame none
-	 * 			
-	 */
-	public String monthsWithSameDays() {
-		StringBuffer meses = new StringBuffer();
-		for (int i = 1; i <= 12; i++) {
-			if(daysOfMonth(i) == daysOfMonth(getMonth())) {
-				meses.append(nameOfMonth(i)+ " ");
-			}
-		}
-		return meses.toString();
-		
-	}
 /*	public boolean isSameYear(Date otherDate){
 		boolean sameYear = false;
 		if(this.year==otherDate.getYear()) {
@@ -323,6 +163,138 @@ public class Date{
 	public boolean isSame(Date otherDate){
 		return this.year==otherDate.getYear() && this.month==otherDate.getMonth() && this.day==otherDate.getDay();
 	}
+	
+		
+	/**
+	 * Devuelve el numero de dias que tiene el mes
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return maxDays
+	 */
+	/**
+	 * Devuelve el nombre del mes
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return monthName
+	 */
+	public String nameOfMonth(int month){
+		String monthName = null;
+		switch(month){
+			case 1:
+				monthName ="January";
+				break;
+			case 3:
+				monthName ="March";
+				break;
+			case 5:
+				monthName ="May";
+				break;
+			case 7:
+				monthName ="July";
+				break;
+			case 8:
+				monthName ="August";
+				break;
+			case 10:
+				monthName ="October";
+				break;
+			case 12: 
+				monthName = "December";
+				break;
+			case 2:
+				monthName = "February";
+
+				
+				break;
+			case 4:
+				monthName ="April";
+				break;
+			case 6:
+				monthName ="June";
+				break;
+			case 9:
+				monthName ="September";
+				break;
+			case 11:
+				monthName = "november";
+				break;
+				
+		}
+		return monthName;
+	}
+	public int daysOfMonth(int month){
+		int maxDays =  0;
+		switch(month){
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12: 
+				maxDays = 31;
+				break;
+			case 2:
+				maxDays = 28;
+				break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				maxDays = 30;
+				break;
+				
+		}
+		return maxDays;
+	}
+	/**
+	 * Devuelve la estacion del año
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return season
+	 */
+	public String seasonOfMonth(int month){
+		String season = null;
+		switch(month){
+			case 12:
+			case 1:
+			case 2:
+				season = "Winter";
+				break;
+			case 3:
+			case 4:
+			case 5:
+				season = "Spring";
+				break;
+			case 6:
+			case 7: 
+			case 8:
+				season = "Summer";
+				break;
+			case 9:
+			case 10:
+			case 11:
+				season = "Autumn";
+				break;
+
+		
+		}
+		return season;
+	}
+	/**
+	 * Devuelve cuantos meses quedan para acabar el  año
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return remaining
+	 */
+	public int monthsToEndYear(int month){
+		int remaining = 12-month;
+		return remaining;
+	}
 	/**
 	 * Retorna los datos mas significativos del objeto Date
 	 * 
@@ -335,6 +307,41 @@ public class Date{
 		Date.append("Day:" + getDay()+ "\n");
 		return Date.toString();
 	}
+	/**
+	 * Muestra todas las fechas que quedan para acabar el mes
+	 * 
+	 * @parame none
+	 * 
+	 */
+	public void datesToFinishMonth() throws DateException {
+		for (int i = getDay(); i < daysOfMonth(getMonth()); i++) {
+			Date nueva = new Date(i, this.getMonth(), this.getYear());
+			System.out.println(nueva.toString());
+			
+		}
+	}
+	/**
+	 * Devuelve los meses con el mismo numero de dias
+	 * 
+	 * @parame none
+	 * 			
+	 */
+	public String monthsWithSameDays() {
+		StringBuffer meses = new StringBuffer();
+		for (int i = 1; i <= 12; i++) {
+			if(daysOfMonth(i) == daysOfMonth(getMonth())) {
+				meses.append(nameOfMonth(i)+ " ");
+			}
+		}
+		return meses.toString();
+		
+	}
+	/**
+	 * Devuelve el numero de dias que quedan para acabar el año
+	 * 
+	 * @parame none
+	 * @return daysToFinishYear
+	 */
 	public int daysToFinishYear() {
 		int daysToFinishYear = 0;
 		int diaM = this.getDay();
