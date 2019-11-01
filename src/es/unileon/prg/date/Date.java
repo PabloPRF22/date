@@ -7,19 +7,30 @@ public class Date{
 	private int year;
 	
 	
+	/**
+	 * Constructor de la clase.Hace set si los valores recibido son corectos sino manda una Exception
+	 * 
+	 * @param day,month,year
+	 *            valor del dia
+	 *            valor del mes
+	 *            valor del año
+	 * 
+	 **/
 	public Date(int day, int month, int year) throws DateException{
 	
 		StringBuilder error = new StringBuilder();
-		try{
 			this.setMonth(month);
 			this.setDay(day);
 			this.setYear(year);
-		}catch(DateException e){
-			error.append(e.getMessage());
-			throw new DateException(error.toString());
-		}
+		
 	}
-	
+	/**
+	 * Devuelve el numero de dias que tiene el mes
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return maxDays
+	 */
 	public int daysOfMonth(int month){
 		int maxDays =  0;
 		switch(month){
@@ -45,7 +56,13 @@ public class Date{
 		}
 		return maxDays;
 	}
-
+	/**
+	 * Devuelve el nombre del mes
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return monthName
+	 */
 	public String nameOfMonth(int month){
 		String monthName = null;
 		switch(month){
@@ -91,6 +108,13 @@ public class Date{
 		}
 		return monthName;
 	}
+	/**
+	 * Devuelve la estacion del año
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return season
+	 */
 	public String seasonOfMonth(int month){
 		String season = null;
 		switch(month){
@@ -119,6 +143,13 @@ public class Date{
 		}
 		return season;
 	}
+	/**
+	 * Devuelve cuantos meses quedan para acabar el  año
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 * @return remaining
+	 */
 	public int monthsToEndYear(int month){
 		int remaining = 12-month;
 		return remaining;
