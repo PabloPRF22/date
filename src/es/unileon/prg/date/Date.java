@@ -25,6 +25,70 @@ public class Date{
 		
 	}
 	/**
+	 * hace set del mes si este es valido
+	 * 
+	 * @parame month
+	 * 			month: numero del mes
+	 */
+	public void setMonth(int month) throws DateException{
+		if(month<1 || month>12){
+			throw new DateException("Date error: month value" + month + " not valid value. It should be from 1 to 12");	
+		}else{
+			this.month = month;
+		}
+	}
+	/**
+	 * Hace set del mes si este es valido
+	 * 
+	 * @parame dia
+	 * 			dia: numero del dia
+	 */
+	public void setDay(int day) throws DateException{
+		if(day<1 ||day>this.daysOfMonth(month)){
+			throw new DateException("Date error: day value" + day + " not valid value" +  "At" + month + "Day should be from 1 to" + daysOfMonth(month));
+		}else{
+			this.day = day;
+		}	
+	}
+	/**
+	 * Hace set si el año es valido
+	 * 
+	 * @parame year
+	 * 			year: año
+	 */
+	public void setYear(int year) throws DateException{
+		if(year<0){
+			throw new DateException("Date error: year value" + year + " not valid value. It should be higther than 0 ");
+		}else{
+			this.year = year;
+		}
+	}
+	/**
+	 * Retorna el año
+	 * 
+	 * @return year
+	 */
+	public int getYear(){
+		return this.year;
+	}
+	/**
+	 * Retorna el mes
+	 * 
+	 * @return month
+	 */
+	public int getMonth(){
+		return this.month;
+	}
+	/**
+	 * Retorna el dia
+	 * 
+	 * @return day
+	 */
+	public int getDay(){
+		return this.day;
+	}
+	
+	/**
 	 * Devuelve el numero de dias que tiene el mes
 	 * 
 	 * @parame month
@@ -154,7 +218,6 @@ public class Date{
 		int remaining = 12-month;
 		return remaining;
 	}
-
 	/**
 	 * Muestra todas las fechas que quedan para acabar el mes
 	 * 
@@ -185,52 +248,6 @@ public class Date{
 		
 	}
 
-
-
-
-
-
-
-	public void setMonth(int month) throws DateException{
-		if(month<1 || month>12){
-			throw new DateException("Date error: month value" + month + " not valid value. It should be from 1 to 12");	
-		}else{
-			this.month = month;
-		}
-	}
-	public void setDay(int day) throws DateException{
-		if(day<1 ||day>this.daysOfMonth(month)){
-			throw new DateException("Date error: day value" + day + " not valid value" +  "At" + month + "Day should be from 1 to" + daysOfMonth(month));
-		}else{
-			this.day = day;
-		}	
-	}
-	public void setYear(int year) throws DateException{
-		if(year<0){
-			throw new DateException("Date error: year value" + year + " not valid value. It should be higther than 0 ");
-		}else{
-			this.year = year;
-		}
-	}
-	
-	public void datesUntilEndMonth(){
-		for(int i = getDay(); i<daysOfMonth(getMonth()); i++){
-			this.day = i;
-			toString();
-		}
-	
-	}
-	public int getYear(){
-		return this.year;
-	}
-	public int getMonth(){
-		return this.month;
-	}
-	public int getDay(){
-		return this.day;
-	}
-
-	
 	public boolean isSameYear(Date otherDate){
 		return this.year==otherDate.getYear();
 	}
