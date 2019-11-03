@@ -384,11 +384,6 @@ public class Date{
 	}
 	public String whichDayIs() throws DateException {
 		String nameDay = null;
-		/*
-		 * Para no implementar un metodo que nos devuelva los dias de diferencia que hay entre la fecha 1/1/año
-		 * hasta la fecha actual utilizo el metodo que me devuelve cuantos dias hay hasta la fecha 1/1/año+1 y resto 
-		 * 365 menos esos dias
-		 */
 		int whichDayIs = daySinceYearStarts()%7;
 		
 		switch (whichDayIs) {
