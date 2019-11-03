@@ -1,5 +1,7 @@
 package es.unileon.prg.date;
 
+import java.util.Random;
+
 public class Date{
 
 	private int day;
@@ -17,9 +19,7 @@ public class Date{
 	 * 
 	 **/
 	public Date(int day, int month, int year) throws DateException{
-	
-		StringBuilder error = new StringBuilder();
-			this.setMonth(month);
+				this.setMonth(month);
 			this.setDay(day);
 			this.setYear(year);
 		
@@ -32,7 +32,7 @@ public class Date{
 	 */
 	public void setMonth(int month) throws DateException{
 		if(month<1 || month>12){
-			throw new DateException("Date error: month value" + month + " not valid value. It should be from 1 to 12");	
+			throw new DateException("Date error: month value " + month + " not valid value. It should be from 1 to 12");	
 		}else{
 			this.month = month;
 		}
@@ -45,7 +45,7 @@ public class Date{
 	 */
 	public void setDay(int day) throws DateException{
 		if(day<1 ||day>this.daysOfMonth(month)){
-			throw new DateException("Date error: day value" + day + " not valid value" +  "At" + month + "Day should be from 1 to" + daysOfMonth(month));
+			throw new DateException("Date error: day value " + day + " not valid value " +  "At " + nameOfMonth(month) + " day should be from 1 to " + daysOfMonth(month));
 		}else{
 			this.day = day;
 		}	
@@ -342,24 +342,21 @@ public class Date{
 	 * @parame none
 	 * @return daysToFinishYear
 	 */
-	public int daysToFinishYear() {
-		int daysToFinishYear = 0;
+	public int daySinceYearStarts() {
+		int daySinceYearStarts = 0;
 		int diaM = this.getDay();
 		int monthM = this.month;
 		while (monthM != 1 || diaM != 1) {
-			if(monthM !=12 && diaM == daysOfMonth(monthM) ) {
-				diaM = 1;
-				monthM++;						
-			}else if(monthM == 12 && diaM == daysOfMonth(12)){
-				monthM = 1;
-				diaM = 1;
+			if(diaM == 1 ) {	
+				monthM--;
+				diaM = daysOfMonth(monthM);
 			}else {
-				diaM++;
+				diaM--;
 			}			
-			daysToFinishYear++;
+			daySinceYearStarts++;
 		
 		}
-		return daysToFinishYear;
+		return daySinceYearStarts;
 	}
 	/**
 	 * genera fechas random hasta acertar la declada
@@ -384,5 +381,39 @@ public class Date{
 			attempts++;	
 		}while(monthRand != this.month || dayRand != this.day);
 		return attempts;
+	}
+	public String whichDayIs() throws DateException {
+		String nameDay = null;
+		/*
+		 * Para no implementar un metodo que nos devuelva los dias de diferencia que hay entre la fecha 1/1/año
+		 * hasta la fecha actual utilizo el metodo que me devuelve cuantos dias hay hasta la fecha 1/1/año+1 y resto 
+		 * 365 menos esos dias
+		 */
+		int whichDayIs = daySinceYearStarts()%7;
+		
+		switch (whichDayIs) {
+		case 1:
+			nameDay = "Monday";
+			break;
+		case 2:
+			nameDay = "Tuesday";
+			break;
+		case 3:
+			nameDay = "Wednesday";
+			break;
+		case 4:
+			nameDay = "Thursday";
+			break;
+		case 5:
+			nameDay = "Friday";
+			break;
+		case 6:
+			nameDay = "Saturday";
+			break;
+		case 7:
+			nameDay = "Sunday";
+			break;
+		}
+		return nameDay;
 	}
 }
